@@ -63,100 +63,28 @@ public class MyCoursesController implements Initializable {
   // Factories for each column
   private void setUpTableColumns() {
     // Course Code column
-    colCode.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, String>, ObservableValue<String>>() {
-      @Override
-      public ObservableValue<String> call(CellDataFeatures<MyCourse, String> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new SimpleStringProperty(c.getValue().getCourse().getCode());
-        }
-        
-        return new SimpleStringProperty(".");
-      }
-    });
+	  colCode.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getCode()));
     
     // Title column
-    colTitle.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, String>, ObservableValue<String>>() {
-      @Override
-      public ObservableValue<String> call(CellDataFeatures<MyCourse, String> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new SimpleStringProperty(c.getValue().getCourse().getTitle());
-        }
-        
-        return new SimpleStringProperty("");
-      }
-    });
+	colTitle.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getTitle()));
     
     // Credit column
-    colCredit.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, Integer>, ObservableValue<Integer>>() {
-      @Override
-      public ObservableValue<Integer> call(CellDataFeatures<MyCourse, Integer> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new ReadOnlyObjectWrapper<>(c.getValue().getCourse().getCredit());
-        }
-        
-        return new ReadOnlyObjectWrapper<>(0);
-      }
-    });
+	colCredit.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().getCourse().getCredit()));
     
     // Days column
-    colDays.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, String>, ObservableValue<String>>() {
-      @Override
-      public ObservableValue<String> call(CellDataFeatures<MyCourse, String> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new SimpleStringProperty(c.getValue().getCourse().getDays());
-        }
-        
-        return new SimpleStringProperty("");
-      }
-    });
+	colDays.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getDays()));
     
     // Start Time column
-    colStart.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, String>, ObservableValue<String>>() {
-      @Override
-      public ObservableValue<String> call(CellDataFeatures<MyCourse, String> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new SimpleStringProperty(c.getValue().getCourse().getStartTime());
-        }
-        
-        return new SimpleStringProperty("");
-      }
-    });
+	colStart.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getStartTime()));
     
     // End Time column
-    colEnd.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, String>, ObservableValue<String>>() {
-      @Override
-      public ObservableValue<String> call(CellDataFeatures<MyCourse, String> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new SimpleStringProperty(c.getValue().getCourse().getEndTime());
-        }
-        
-        return new SimpleStringProperty("");
-      }
-    });
+	colEnd.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getEndTime()));
     
     // Status column
-    colStatus.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, Status>, ObservableValue<Status>>() {
-      @Override
-      public ObservableValue<Status> call(CellDataFeatures<MyCourse, Status> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new ReadOnlyObjectWrapper<Status>(c.getValue().getStatus());
-        }
-        
-        return new ReadOnlyObjectWrapper<Status>();
-      }
-    });
+	colStatus.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().getStatus()));
     
     // Grade column
-    colGrade.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, Grade>, ObservableValue<Grade>>() {
-      @Override
-      public ObservableValue<Grade> call(CellDataFeatures<MyCourse, Grade> c) {
-        if (c.getValue() != null && c.getValue().getCourse() != null) {
-          return new ReadOnlyObjectWrapper<Grade>(c.getValue().getGrade());
-        }
-        
-        return new ReadOnlyObjectWrapper<Grade>();
-      }
-    });
+	colGrade.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().getGrade()));
   }
 
   @Override
