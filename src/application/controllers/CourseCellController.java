@@ -89,6 +89,7 @@ public class CourseCellController extends ListCell<Course> implements Initializa
     else {
       lblCode.setText(item.getCode());
       txtTitle.setText(item.getTitle());
+      txtDescription.getChildren().clear();
       txtDescription.getChildren().add(new Text(item.getDescription()));
       lblDays.setText("days: " + item.getDays());
       lblTime.setText("time: " + item.getTime());
