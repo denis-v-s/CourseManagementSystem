@@ -61,16 +61,7 @@ public class AdminControlPanelController implements Initializable {
     tblStudents.setItems(filteredUsers);
     
     // Username column of User table
-    colUsername.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
-      @Override
-      public ObservableValue<String> call(CellDataFeatures<Person, String> u) {
-        if (u.getValue() != null) {
-          return new SimpleStringProperty(u.getValue().getUsername());
-        }
-        
-        return new SimpleStringProperty(".");
-      }
-    });
+    colUsername.setCellValueFactory(u -> new SimpleStringProperty(u.getValue().getUsername()));
     
     // attach row selection event to the student table
     tblStudents.getSelectionModel().selectedItemProperty().addListener((observable, oldSelection, newSelection) -> {
@@ -84,30 +75,12 @@ public class AdminControlPanelController implements Initializable {
         cbMajor.getSelectionModel().select(selectedStudent.getMajor());
         
         // Course Code column
-        colCode.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, String>, ObservableValue<String>>() {
-          @Override
-          public ObservableValue<String> call(CellDataFeatures<MyCourse, String> c) {
-            if (c.getValue() != null && c.getValue().getCourse() != null) {
-              return new SimpleStringProperty(c.getValue().getCourse().getCode());
-            }
-            
-            return new SimpleStringProperty(".");
-          }
-        });
+        colCode.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getCode()));
         
         // Title column
-        colTitle.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, String>, ObservableValue<String>>() {
-          @Override
-          public ObservableValue<String> call(CellDataFeatures<MyCourse, String> c) {
-            if (c.getValue() != null && c.getValue().getCourse() != null) {
-              return new SimpleStringProperty(c.getValue().getCourse().getTitle());
-            }
-            
-            return new SimpleStringProperty(".");
-          }
-        });
+        colTitle.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getTitle()));
         
-        // Grade Column
+        // Grade Column *** COMBOBOX ***
         ObservableList<Grade> grades = FXCollections.observableArrayList(Grade.class.getEnumConstants());
         
         //colGrade.setCellFactory(ComboBoxTableCell.forTableColumn(grades));
