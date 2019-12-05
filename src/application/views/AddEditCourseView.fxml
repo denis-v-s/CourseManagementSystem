@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox minHeight="600.0" minWidth="800.0" styleClass="secondary-bg" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AddEditCourseController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" />
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save" />
+                           </children>
+                           <BorderPane.margin>
+                              <Insets top="10.0" />
+                           </BorderPane.margin>
+                        </HBox>
+                     </bottom>
+                     <left>
+                        <GridPane minHeight="450.0" minWidth="350.0" style="-fx-background-radius: 5;" styleClass="primary-bg">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label text="Code" />
+                                    <TextField fx:id="txtCode" promptText="CSE 148" />
+                                 </children>
+                              </VBox>
+                              <VBox GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Instructor" />
+                                    <TextField fx:id="txtInstructor" promptText="Bin Li" />
+                                 </children>
+                              </VBox>
+                              <VBox GridPane.rowIndex="2">
+                                 <children>
+                                    <Label text="Title" />
+                                    <TextField fx:id="txtTitle" promptText="Object-Oriented Programming" />
+                                 </children>
+                              </VBox>
+                              <VBox GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label text="Description" />
+                                    <TextArea fx:id="txtDescription" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <BorderPane.margin>
+                              <Insets right="10.0" />
+                           </BorderPane.margin>
+                        </GridPane>
+                     </left>
+                     <right>
+                        <GridPane minHeight="300.0" minWidth="300.0" style="-fx-background-radius: 5;" styleClass="primary-bg">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <VBox GridPane.columnSpan="2">
+                                 <children>
+                                    <Label text="Prerequisite" />
+                                    <TextField fx:id="txtPrereq" promptText="CSE118 with a C or higher" />
+                                 </children>
+                              </VBox>
+                              <VBox GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Textbook" />
+                                    <TextField fx:id="txtTextbook" promptText="Object-Oriented Programming 11th Edition" />
+                                 </children>
+                              </VBox>
+                              <VBox GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                 <children>
+                                    <GridPane hgap="5.0" vgap="10.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <CheckBox fx:id="chkMonday" mnemonicParsing="false" text="Monday" />
+                                          <CheckBox fx:id="chkTuesday" mnemonicParsing="false" text="Tuesday" GridPane.columnIndex="1" />
+                                          <CheckBox fx:id="chkWednesday" mnemonicParsing="false" text="Wednesday" GridPane.columnIndex="2" />
+                                          <CheckBox fx:id="chkThursday" mnemonicParsing="false" text="Thursday" GridPane.rowIndex="1" />
+                                          <CheckBox fx:id="chkFriday" mnemonicParsing="false" text="Friday" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="TOP_RIGHT" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label text="Start time" />
+                                    <TextField fx:id="txtStartTime" maxWidth="100.0" promptText="11:00 AM" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label text="End time" />
+                                    <TextField fx:id="txtEndTime" maxWidth="100.0" promptText="12:30 PM" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </GridPane>
+                     </right>
+                  </BorderPane>
+               </children>
+            </HBox>
+         </center>
+         <top>
+            <HBox alignment="CENTER_LEFT" styleClass="primary-bg" BorderPane.alignment="CENTER">
+               <children>
+                  <Hyperlink onAction="#onBackLinkClick" text="Back" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="Course Editor">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</VBox>

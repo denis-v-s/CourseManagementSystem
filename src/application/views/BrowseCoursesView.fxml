@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox minWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.BrowseCoursesController">
+   <children>
+      <HBox>
+         <children>
+            <MenuButton mnemonicParsing="false" text="Menu">
+              <items>
+                <MenuItem fx:id="btnAddCourse" mnemonicParsing="false" onAction="#onAddCourseButtonClick" text="Add Course" />
+                <MenuItem fx:id="btnMyCourses" mnemonicParsing="false" onAction="#onMyCoursesButtonClick" text="My Courses" />
+                  <MenuItem fx:id="btnStudents" mnemonicParsing="false" onAction="#onStudentListButtonClick" text="Student List" />
+                  <MenuItem mnemonicParsing="false" onAction="#onLogoutButtonClick" text="Logout" />
+              </items>
+            </MenuButton>
+            <Region prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="txtSearch" alignment="CENTER_RIGHT" maxWidth="300.0" minWidth="200.0" prefWidth="200.0" promptText="Looking for something?" styleClass="search-box">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <ListView fx:id="courseListView" focusTraversable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+   </padding>
+</VBox>

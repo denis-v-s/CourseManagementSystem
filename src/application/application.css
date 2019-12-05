@@ -1,0 +1,133 @@
+/* VARIABLE DEFINITIONS: Only these 4 variables have to be adjusted, the rest is copy-paste */
+* {
+	-fx-primary-color: #416dea;
+    -fx-my-menu-color: #416dea;                  /* Change according to your needs */
+    -fx-my-menu-color-highlighted: #455a64;      /* Change according to your needs */
+    -fx-my-menu-font-color: #FFFFFF;             /* Change according to your needs */
+    -fx-my-menu-font-color-highlighted: #FFFFFF; /* Change according to your needs */
+}
+
+.secondary-bg {
+	-fx-background-color: #eee;
+}
+
+.primary-bg {
+	-fx-background-color: rgba(255, 255, 255, .85);
+}
+
+#login-window-bg {
+	-fx-background-image: url("./assets/login-image.jpg");
+	-fx-background-size: cover;
+}
+
+#registration-page-root {
+	-fx-background-image: url("./assets/registration-image.jpg");
+	-fx-background-size: cover;
+}
+
+.button {
+	-fx-background-color: #416dea;
+	-fx-text-fill: #fff;
+	-fx-padding: 5 25 5 25;
+	-fx-border-radius: 34;
+	-fx-cursor: hand;
+}
+
+.button:hover {
+	-fx-background-color: #477EFF;
+}
+
+/* REMOVE TABLE HIGHLIGHT */
+.special-table .table-row-cell:filled:selected {
+  -fx-background: -fx-control-inner-background ;
+  -fx-background-color: -fx-table-cell-border-color, -fx-background ;
+  -fx-background-insets: 0, 0 0 1 0 ;
+  -fx-table-cell-border-color: derive(-fx-color, 5%);
+}
+.special-table .table-row-cell:odd:filled:selected {
+  -fx-background: -fx-control-inner-background-alt ;
+}
+
+.error {
+	-fx-text-fill: #F32C52;
+}
+
+.search-box {
+	-fx-background-radius: 5;
+}
+
+/* MENU BAR + Top-level MENU BUTTONS */
+.menu-button {
+	-fx-background-color: -fx-my-menu-color;
+}
+
+.menu-button > .label {
+	-fx-text-fill: -fx-my-menu-font-color;
+}
+
+/*** The menu bar itself ***/    
+.menu-bar {
+    -fx-background-color: -fx-my-menu-color;
+}
+
+/*** Top-level menu itself (not selected / hovered) ***/
+.menu-bar > .container > .menu-button {
+    -fx-background-color: -fx-my-menu-color;
+}
+
+/*** Top-level menu's label (not selected / hovered) ***/
+.menu-bar > .container > .menu-button > .label {
+    -fx-text-fill: -fx-my-menu-font-color;
+}
+
+/*** Top-level menu's label (disabled) ***/
+.menu-bar > .container > .menu-button > .label:disabled {
+    -fx-opacity: 1.0;
+}
+
+/*** Top-level menu itself (selected / hovered) ***/
+.menu-bar > .container > .menu-button:hover,
+.menu-bar > .container > .menu-button:focused,
+.menu-bar > .container > .menu-button:showing {
+    -fx-background-color: -fx-my-menu-color-highlighted;
+}
+
+/*** Top-level menu's label (selected / hovered) ***/
+.menu-bar > .container > .menu-button:hover > .label,
+.menu-bar > .container > .menu-button:focused > .label,
+.menu-bar > .container > .menu-button:showing > .label {
+    -fx-text-fill: -fx-my-menu-font-color-highlighted;
+}
+
+/* MENU ITEM (children of a MENU BUTTON) */
+/*** The item itself (not hovered / focused) ***/
+.menu-item {
+    -fx-background-color: -fx-my-menu-color;
+    -fx-padding: 10 50 10 10;
+}
+
+/*** The item's label (not hovered / focused) ***/   
+.menu-item .label {
+    -fx-text-fill: -fx-my-menu-font-color;
+}
+
+/*** The item's label (disabled) ***/   
+.menu-item .label:disabled {
+    -fx-opacity: 1.0;
+}    
+
+/*** The item itself (hovered / focused) ***/    
+.menu-item:focused, .menu-item:hovered {
+    -fx-background-color: -fx-my-menu-color-highlighted; 
+}
+
+/*** The item's label (hovered / focused) ***/  
+.menu-item:focused .label, .menu-item:hovered .label {
+    -fx-text-fill: -fx-my-menu-font-color-highlighted;
+}
+
+/* CONTEXT MENU */
+/*** The context menu that contains a menu's menu items ***/  
+.context-menu {
+    -fx-background-color: -fx-my-menu-color; 
+}

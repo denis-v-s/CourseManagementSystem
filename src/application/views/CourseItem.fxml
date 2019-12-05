@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane fx:id="cell" prefHeight="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox maxHeight="150.0" maxWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblCode" contentDisplay="CENTER" minWidth="100.0" text="code" textFill="#a8a8a8">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+            <Region prefHeight="200.0" prefWidth="200.0" />
+            <Hyperlink fx:id="linkEdit" onAction="#onEditCourseLinkClick" text="Edit Course" />
+            <Hyperlink fx:id="linkRemove" alignment="TOP_LEFT" onAction="#onRemoveCourseLinkClick" text="Remove Course" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <Text fx:id="txtTitle" fill="#6e6e6e" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" BorderPane.alignment="CENTER_LEFT">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" top="5.0" />
+         </BorderPane.margin>
+      </Text>
+   </top>
+   <bottom>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_RIGHT" spacing="15.0">
+               <children>
+                  <Label fx:id="lblDays" text="Days" textFill="#6e6e6e" />
+                  <Label fx:id="lblTime" text="Time" textFill="#6e6e6e" />
+                  <Label fx:id="lblPrereq" text="Prereq" textFill="#6e6e6e" />
+                  <Label fx:id="lblInstructor" text="Instructor" textFill="#6e6e6e" />
+                  <Button fx:id="btnEnroll" mnemonicParsing="false" text="Enroll" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets right="5.0" />
+         </padding>
+      </VBox>
+   </bottom>
+   <center>
+      <VBox maxHeight="150.0" prefWidth="580.0">
+         <children>
+            <TextFlow fx:id="txtDescription" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="10.0" />
+               </BorderPane.margin>
+            </TextFlow>
+         </children>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <padding>
+      <Insets right="10.0" />
+   </padding>
+</BorderPane>

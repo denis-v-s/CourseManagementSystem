@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MyCoursesController">
+   <center>
+      <TableView fx:id="tblMyCourses" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colCode" prefWidth="75.0" text="Code" />
+          <TableColumn fx:id="colTitle" minWidth="100.0" prefWidth="190.0" text="Title" />
+            <TableColumn fx:id="colCredit" prefWidth="75.0" text="Credit" />
+            <TableColumn fx:id="colDays" prefWidth="75.0" text="Days" />
+            <TableColumn fx:id="colStart" prefWidth="75.0" text="Start time" />
+            <TableColumn fx:id="colEnd" prefWidth="75.0" text="End time" />
+            <TableColumn fx:id="colStatus" prefWidth="100.0" text="Status" />
+            <TableColumn fx:id="colGrade" prefWidth="75.0" text="Grade" />
+            <TableColumn fx:id="colRemove" prefWidth="75.0" text="Remove" />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Hyperlink onAction="#onBackLinkClick" prefHeight="23.0" prefWidth="200.0" text="Back to Course Browser" />
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Label alignment="CENTER" minWidth="140.0" text="GPA: 3.2">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="txtTitle" prefHeight="25.0" prefWidth="200.0" promptText="Search by title" styleClass="search-box" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>
