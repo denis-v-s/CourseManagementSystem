@@ -29,6 +29,7 @@ public class MyCoursesController implements Initializable {
   @FXML private TableColumn<MyCourse, Grade> colGrade;
   @FXML private TableColumn<MyCourse, String> colRemove;
   @FXML private TextField txtTitle;
+  @FXML private Label txtGPA;
   
   private App context;
   
@@ -40,6 +41,9 @@ public class MyCoursesController implements Initializable {
     FilteredList<MyCourse> filteredCourses = new FilteredList<>(courses);
     
     tblMyCourses.setItems(filteredCourses);
+    
+    // update GPA
+    txtGPA.setText(String.format("GPA: %.2f", s.getGPA()));
     
     // set up the search feature
     txtTitle.textProperty().addListener(observable -> {

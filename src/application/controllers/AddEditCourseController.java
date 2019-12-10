@@ -19,6 +19,7 @@ public class AddEditCourseController implements Initializable {
   public void setContext(App context) {
     this.context = context;
     
+    // if got here through an edit course link, prefill the form with selected course data
     if (context.getSelectedCourse() != null) {
       Course course = context.getSelectedCourse();
       txtCode.setText(course.getCode());

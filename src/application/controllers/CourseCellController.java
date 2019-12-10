@@ -8,6 +8,9 @@ import application.App;
 import application.models.Admin;
 import application.models.Course;
 import application.models.Student;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -46,9 +49,10 @@ public class CourseCellController extends ListCell<Course> implements Initializa
   }
   
   public void onRemoveCourseLinkClick() {
-    context.getCourseManager().removeCourse(getItem().getID());
-    getListView().refresh();
-    //context.navigateToCourseBrowser();
+    int courseId = getItem().getID();
+    FilteredList<Course> items = (FilteredList<Course>) getListView().getItems();
+    items.getSource().remove(getItem());
+    context.getCourseManager().removeCourse(courseId);
   }
   
   private boolean isEnrolled() {

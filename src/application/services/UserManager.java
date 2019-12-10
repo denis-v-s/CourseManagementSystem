@@ -42,11 +42,6 @@ public class UserManager implements Serializable {
     return users.containsKey(username) && users.get(username).getPassword().equals(password);
   }
   
-  // TODO
-  public void generateReport() {
-    throw new java.lang.UnsupportedOperationException("Method not yet implemented");
-  }
-  
   // mock data
   private void setUpMockUsers() {
     Admin admin = new Admin("John", null, 35, null, "Male");
@@ -63,7 +58,7 @@ public class UserManager implements Serializable {
     
     s = new Student();
     s.setUsername("IronMan");
-    s.setPassword("secret");
+    s.setPassword("a");
     s.setMajor("Underwater Basket Weaving");
     addUser(s);
     

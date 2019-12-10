@@ -32,7 +32,10 @@ public class CourseManager implements Serializable {
   }
   
   public void editCourse(int courseId, Course course) {
-    courses.get(courseId).edit(course);
+    Course c = getCourse(courseId);
+    removeCourse(courseId);
+    c.edit(course);
+    addCourse(c);
   }
   
   public boolean courseExists(int courseId) {

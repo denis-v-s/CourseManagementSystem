@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -78,6 +79,14 @@
                         <ComboBox fx:id="cbMajor" maxWidth="1.7976931348623157E308" prefWidth="150.0" />
                      </children>
                   </VBox>
+                  <Label fx:id="lblGPA" text="GPA: #.##" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets />
@@ -95,12 +104,12 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin></Label>
-            <TableView fx:id="tblCourses" prefHeight="200.0" prefWidth="200.0" styleClass="special-table" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tblCourses" editable="true" prefHeight="200.0" prefWidth="200.0" styleClass="special-table" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="colCode" prefWidth="75.0" text="Code" />
-                <TableColumn fx:id="colTitle" prefWidth="202.0" text="Title" />
+                <TableColumn fx:id="colCode" editable="false" prefWidth="75.0" text="Code" />
+                <TableColumn fx:id="colTitle" editable="false" prefWidth="202.0" text="Title" />
                   <TableColumn fx:id="colGrade" prefWidth="75.0" text="Grade" />
-                  <TableColumn fx:id="colRemove" prefWidth="75.0" text="Remove" />
+                  <TableColumn fx:id="colRemove" editable="false" prefWidth="75.0" text="Remove" />
               </columns>
             </TableView>
          </children>

@@ -28,7 +28,7 @@
          <children>
             <Hyperlink onAction="#onBackLinkClick" prefHeight="23.0" prefWidth="200.0" text="Back to Course Browser" />
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Label alignment="CENTER" minWidth="140.0" text="GPA: 3.2">
+            <Label fx:id="txtGPA" alignment="CENTER" minWidth="140.0" text="GPA: 3.2">
                <font>
                   <Font size="30.0" />
                </font>

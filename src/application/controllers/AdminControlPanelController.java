@@ -1,24 +1,20 @@
 package application.controllers;
 
 import java.net.URL;
-import java.util.EnumSet;
 import java.util.ResourceBundle;
 import application.App;
 import application.models.*;
 import application.services.UserManager;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.*;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.ComboBoxTableCell;
-import javafx.util.Callback;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.StringConverter;
 
 public class AdminControlPanelController implements Initializable {
   @FXML private TableView<Person> tblStudents, tblStudentInfo;
@@ -32,6 +28,7 @@ public class AdminControlPanelController implements Initializable {
   @FXML private TextField txtUsername, txtPassword;
   @FXML private ComboBox<String> cbMajor;
   @FXML private Button btnSave;
+  @FXML private Label lblGPA;
   
   private App context;
   private UserManager userManager;
@@ -73,6 +70,7 @@ public class AdminControlPanelController implements Initializable {
         txtUsername.setText(selectedStudent.getUsername());
         txtPassword.setText(selectedStudent.getPassword());
         cbMajor.getSelectionModel().select(selectedStudent.getMajor());
+        lblGPA.setText(String.format("GPA: %.2f", selectedStudent.getGPA()));
         
         // Course Code column
         colCode.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getCode()));
@@ -81,20 +79,23 @@ public class AdminControlPanelController implements Initializable {
         colTitle.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCourse().getTitle()));
         
         // Grade Column *** COMBOBOX ***
-        ObservableList<Grade> grades = FXCollections.observableArrayList(Grade.class.getEnumConstants());
-        
-        //colGrade.setCellFactory(ComboBoxTableCell.forTableColumn(grades));
-        colGrade.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, Grade>, ObservableValue<Grade>>() {
-          
+        ObservableList<Grade> grades = FXCollections.observableArrayList(Grade.values());
+        // set up list of available grades
+        colGrade.setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Grade>() {
           @Override
-          public ObservableValue<Grade> call(CellDataFeatures<MyCourse, Grade> param) {
-              MyCourse course = param.getValue();
-              return new SimpleObjectProperty<Grade>(course.getGrade());
+          public String toString(Grade grade) {
+            return (grade != null) ? grade.toString() : null;
           }
-        });
+          @Override
+          public Grade fromString(String grade) {
+            return (grade != null) ? Grade.valueOf(grade) : null;
+          }
+        }, grades));
+        
+        // get grade for current course
+        colGrade.setCellValueFactory(new PropertyValueFactory<>("grade"));
 
-        colGrade.setCellFactory(ComboBoxTableCell.forTableColumn(grades));
-
+        // attach event to capture grade change
         colGrade.setOnEditCommit((CellEditEvent<MyCourse, Grade> event) -> {
           TablePosition<MyCourse, Grade> pos = event.getTablePosition();
 
@@ -104,19 +105,8 @@ public class AdminControlPanelController implements Initializable {
           MyCourse course = event.getTableView().getItems().get(row);
 
           course.setGrade(newGrade);
+          lblGPA.setText(String.format("GPA: %.2f", selectedStudent.getGPA()));
         });
-        
-//        colGrade.setCellValueFactory(new Callback<CellDataFeatures<MyCourse, Grade>, ObservableValue<Grade>>() {
-//          @Override
-//          public ObservableValue<Grade> call(CellDataFeatures<MyCourse, Grade> c) {
-//            if (c.getValue() != null && c.getValue().getCourse() != null) {
-//              return new ReadOnlyObjectWrapper<>(c.getValue().getGrade());
-//            }
-//            
-//            return new ReadOnlyObjectWrapper<>(null);
-//          }
-//        });
-        
         
         // Delete column
         colRemove.setCellFactory(param -> new TableCell<MyCourse, Void>() {

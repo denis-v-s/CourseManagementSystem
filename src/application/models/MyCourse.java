@@ -2,6 +2,8 @@ package application.models;
 
 import java.io.Serializable;
 
+import javafx.beans.property.*;
+
 public class MyCourse implements Serializable {
   private static final long serialVersionUID = 1L;
   private Course course;
@@ -31,7 +33,7 @@ public class MyCourse implements Serializable {
   }
 
   public Status getStatus() {
-    return this.status;
+    return status;
   }
 
   // IN_PROGRESS, PASSED, FAILED, WITHDREW

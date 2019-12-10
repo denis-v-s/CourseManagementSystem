@@ -1,6 +1,5 @@
 package application.models;
 
-import java.io.Serializable;
 import java.util.*;
 
 public class Student extends Person {
@@ -14,13 +13,18 @@ public class Student extends Person {
 
   public double getGPA() {
     double sum = 0;
+    int count = 0;
     
     // compute the sum of grade points, and return the average
     for (MyCourse c : courses.values()) {
-      sum += c.getGrade().getGradePoints();
+      int points = c.getGrade().getGradePoints();
+      if (points > 0) {
+        sum += points;
+        count++;
+      }
     }
-
-    return sum / courses.size();
+    
+    return (count > 0) ? sum / count : 0;
   }
   
   public ArrayList<MyCourse> getMyCourses() {
@@ -36,7 +40,7 @@ public class Student extends Person {
   }
   
   public void enrollToCourse(Course course) {
-    courses.put(course.getID(), new MyCourse(course, null, Status.IN_PROGRESS));
+    courses.put(course.getID(), new MyCourse(course, Grade.C, Status.IN_PROGRESS));
   }
 
   public void unenrollFromCourse(int courseID) {
@@ -62,9 +66,11 @@ public class Student extends Person {
     );
   }
 
-//  @Override
-//  public boolean equals(Object o) {
-//    Student s = (Student) o;
-//    return (super.equals(s) && this.getMajor().equals(s.getMajor()));
-//  }
+  @Override
+  public boolean equals(Object o) {
+    if (o == null) return false;
+    
+    Student s = (Student) o;
+    return (super.equals(s) && this.getMajor().equals(s.getMajor()));
+  }
 }

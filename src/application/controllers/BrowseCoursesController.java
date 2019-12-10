@@ -42,7 +42,7 @@ public class BrowseCoursesController implements Initializable {
     });
     
     courseListView.setItems(filteredItems);
-    courseListView.setCellFactory(new CourseCellItemFactory());
+    courseListView.setCellFactory(c -> new CourseCellController(context));
     
     // set button visibility based on who is logged in
     btnAddCourse.setVisible(isAdmin());
@@ -78,13 +78,5 @@ public class BrowseCoursesController implements Initializable {
   
   private boolean isAdmin() {
     return context.getActiveUser() instanceof Admin;
-  }
-  
-  // inner class for cell factory
-  class CourseCellItemFactory implements Callback<ListView<Course>, ListCell<Course>> {
-    @Override
-    public ListCell<Course> call(ListView<Course> param) {
-      return new CourseCellController(context);
-    }
   }
 }

@@ -12,7 +12,7 @@ public class Person implements Serializable {
   private String gender;
   private String username;
   private String password;
-  private int id = 0;
+  private int id;
   
   public Person() {
     this.id = this.hashCode();

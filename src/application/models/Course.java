@@ -15,7 +15,6 @@ public class Course implements Cloneable, Serializable {
   private String prereq; // prerequisites
   private String startTime;
   private String endTime;
-  // TODO: course id resets to 0 when app restarts, need to sync the last ID on restart.
 
   // constructors
   public Course() {
